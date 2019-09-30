@@ -45,7 +45,7 @@ export default class HomeScreen extends Component {
       {this.state.posts.map((post, index) => {
         
         return (
-          <PostComponent post={post} key={index} title={post.title}/>
+          <PostComponent props post={post} key={index} title={post.title}/>
         )
       })}
       </ScrollView>
