@@ -7,7 +7,6 @@ import { Card } from 'react-native-elements';
 import AutoHeightImage from 'react-native-auto-height-image';
 
 export default class PostComponent extends React.Component {
-     mono ="dd"
   state={
     likes : 0
   }
@@ -31,15 +30,15 @@ export default class PostComponent extends React.Component {
        
     </>
     return (
-      <TouchableWithoutFeedback onPress={this.props.navigate}>
+      <TouchableWithoutFeedback  onPress={() => {this.props.navigate(this.props.postData, this.state.likes)}}>
         <Card  key={this.mono} title={header}>    
           <Image source={{uri: this.props.postData.url}} style={{width: "100%", height: 200}} />
-          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+          <View style={{flexDirection: 'row', justifyContent: 'space-around'}}>
           <View style={{flexWrap: 'wrap', alignItems: 'flex-start', flexDirection:'row',}}>
             <TouchableOpacity onPress={this.downLikes} style={{ marginTop: 10, alignSelf: 'flex-start'}}>
               <Icon style={{alignSelf: 'flex-start', paddingTop: 4, paddingRight: 10}} name="arrow-down" size={15} color="#616161" />
             </TouchableOpacity>
-            <Text style={{marginTop: 10, alignSelf: 'flex-start', fontSize: 15}}>{this.state.likes}</Text>
+            <Text style={{marginTop: 10, color: "#616161", alignSelf: 'flex-start', fontSize: 15, fontWeight: 'bold'}}>{this.state.likes}</Text>
             <TouchableOpacity onPress={this.upLikes} style={{ marginTop: 10, alignSelf: 'flex-start'}}>
               <Icon style={{alignSelf: 'flex-start', paddingTop: 2, paddingLeft: 10}} name="arrow-up" size={15} color="#616161" />
             </TouchableOpacity>
@@ -47,19 +46,13 @@ export default class PostComponent extends React.Component {
           
           <View style={{flexWrap: 'wrap', alignItems: 'flex-start', flexDirection:'row',}}>
             <Icon style={{marginTop: 10, alignSelf: 'flex-start', paddingTop: 4, paddingRight: 10}} name="comment-alt" size={15} color="#616161" />
-            <Text style={{marginTop: 10, alignSelf: 'flex-start', fontSize: 15}}>{this.props.postData.comments.length}</Text>
+            <Text style={{marginTop: 10, color: "#616161", fontWeight: 'bold', alignSelf: 'flex-start', fontSize: 15}}>{this.props.postData.comments.length}</Text>
           </View>
 
           <View style={{flexWrap: 'wrap', alignItems: 'flex-start', flexDirection:'row',}}>
             <Icon style={{marginTop: 10, alignSelf: 'flex-start', paddingTop: 4, paddingRight: 10}} name="share" size={15} color="#616161" />
-            <Text style={{marginTop: 10, alignSelf: 'flex-start', fontSize: 15}}>Share</Text>
+            <Text style={{marginTop: 10, color: "#616161", fontWeight: 'bold', alignSelf: 'flex-start', fontSize: 15}}>Share</Text>
           </View>
-
-          <View style={{flexWrap: 'wrap', alignItems: 'flex-start', flexDirection:'row',}}>
-            <Icon style={{marginTop: 10, alignSelf: 'flex-start', paddingTop: 4, paddingRight: 10}} name="award" size={15} color="#616161" />
-            <Text style={{marginTop: 10, alignSelf: 'flex-start', fontSize: 15}}>Award</Text>
-          </View>
-          
           </View>
         </Card>
       </TouchableWithoutFeedback>
